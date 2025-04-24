@@ -1,0 +1,9 @@
+//ff('2025/05/02')
+function ff(d) {
+	document.querySelector('#shukkin_time_hour').value = '9';
+	document.querySelector('#shukkin_time_min').value  = '0';
+	document.querySelector('#taikin_time_hour').value  = '18';
+	document.querySelector('#taikin_time_min').value   = '0';
+	document.querySelector('#kinmu_area').value='在宅勤務';
+	document.querySelector('#kinmu_date').value=d;
+}
