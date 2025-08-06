@@ -1,26 +1,34 @@
-<html>
-<head>
-  <title>HTA JSON Example</title>
-  <hta:application 
-    applicationname="JsonExample" 
-    border="thin" 
-    caption="yes" 
-    showintaskbar="yes" 
-    singleinstance="yes" 
-    windowstate="normal" 
-  />
-  <script type="text/javascript">
-    window.onload = function () {
-      var jsonString = '{"name":"Alice","age":30}';
-      var obj = JSON.parse(jsonString);
-      alert("Name: " + obj.name + "\nAge: " + obj.age);
+var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+xmlDoc.async = false;
 
-      var newJson = JSON.stringify({ city: "Tokyo", year: 2025 });
-      alert("Stringified JSON: " + newJson);
-    };
-  </script>
-</head>
-<body>
-  <h1>HTA JSON Demo</h1>
-</body>
-</html>
+var root = xmlDoc.createElement("root");
+
+var note = xmlDoc.createElement("note");
+var cdata = xmlDoc.createCDATASection("This is <b>bold</b> & needs no escape!");
+
+note.appendChild(cdata);
+root.appendChild(note);
+xmlDoc.appendChild(root);
+
+alert(xmlDoc.xml);
+
+
+var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+xmlDoc.async = false;
+
+var root = xmlDoc.createElement("people");
+
+var person = xmlDoc.createElement("person");
+var name = xmlDoc.createElement("name");
+name.text = "Alice";
+
+var age = xmlDoc.createElement("age");
+age.text = "30";
+
+person.appendChild(name);
+person.appendChild(age);
+root.appendChild(person);
+xmlDoc.appendChild(root);
+
+// 👇 Output the XML string
+alert(xmlDoc.xml);
