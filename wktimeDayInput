@@ -1,9 +1,26 @@
-//ff('2025/05/02')
-function ff(d) {
-	document.querySelector('#shukkin_time_hour').value = '9';
-	document.querySelector('#shukkin_time_min').value  = '0';
-	document.querySelector('#taikin_time_hour').value  = '18';
-	document.querySelector('#taikin_time_min').value   = '0';
-	document.querySelector('#kinmu_area').value='在宅勤務';
-	document.querySelector('#kinmu_date').value=d;
-}
+<html>
+<head>
+  <title>HTA JSON Example</title>
+  <hta:application 
+    applicationname="JsonExample" 
+    border="thin" 
+    caption="yes" 
+    showintaskbar="yes" 
+    singleinstance="yes" 
+    windowstate="normal" 
+  />
+  <script type="text/javascript">
+    window.onload = function () {
+      var jsonString = '{"name":"Alice","age":30}';
+      var obj = JSON.parse(jsonString);
+      alert("Name: " + obj.name + "\nAge: " + obj.age);
+
+      var newJson = JSON.stringify({ city: "Tokyo", year: 2025 });
+      alert("Stringified JSON: " + newJson);
+    };
+  </script>
+</head>
+<body>
+  <h1>HTA JSON Demo</h1>
+</body>
+</html>
