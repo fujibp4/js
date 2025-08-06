@@ -1,3 +1,45 @@
+<html>
+<head>
+  <title>HTA XML Example</title>
+  <hta:application
+    applicationname="XMLDemo"
+    border="thin"
+    caption="yes"
+    showintaskbar="yes"
+    singleinstance="yes"
+    windowstate="normal"
+  />
+  <script type="text/javascript">
+    function loadXML() {
+      var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+      xmlDoc.async = false;
+      xmlDoc.load("data.xml");  // Replace with your actual XML path
+
+      if (xmlDoc.parseError.errorCode != 0) {
+        alert("Error parsing XML:\n" + xmlDoc.parseError.reason);
+        return;
+      }
+
+      var nodes = xmlDoc.getElementsByTagName("person");
+      var msg = "";
+      for (var i = 0; i < nodes.length; i++) {
+        var name = nodes[i].getElementsByTagName("name")[0].text;
+        var age = nodes[i].getElementsByTagName("age")[0].text;
+        msg += name + " is " + age + " years old\n";
+      }
+
+      alert(msg);
+    }
+  </script>
+</head>
+<body>
+  <h2>XML Reader Demo</h2>
+  <button onclick="loadXML()">Load XML</button>
+</body>
+</html>
+
+
+--------------
 var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
 xmlDoc.async = false;
 
